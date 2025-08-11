@@ -1,0 +1,21 @@
+services:
+  forum_db:
+    container_name: alchemist_forum_db
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    container_name: alchemist_forum_cache
+    image: redis:7
+    ports:
+      - "6379:6379"
+
+volumes:
+  pgdata: {}

@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :alchemist_forum, AlchemistForum.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   hostname: "localhost",
   database: "alchemist_forum_dev",
   stacktrace: true,
