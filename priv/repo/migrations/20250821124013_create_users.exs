@@ -17,7 +17,7 @@ defmodule AlchemistForum.Repo.Migrations.CreateUsers do
       add :type, :string, null: false, default: "normal"
       add :active, :boolean, null: false, default: true
       add :exclude_topic, :boolean, null: false, default: false
-      add :bulletin_board, :text
+      add :bulletin_board, :string
 
       timestamps(updated_at: true, inserted_at: :registered_at)
     end
