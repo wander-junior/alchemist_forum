@@ -6,7 +6,7 @@ defmodule AlchemistForum.Repo.Migrations.CreatePosts do
       add :topic_id, references(:topics, on_delete: :delete_all), null: false
       add :author_id, references(:users, on_delete: :nilify_all)
 
-      add :message, :text, null: false
+      add :message, :string, null: false
       add :number_of_up, :integer, null: false, default: 0
       add :number_of_down, :integer, null: false, default: 0
       add :time_to_edit, :naive_datetime
