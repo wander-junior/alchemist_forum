@@ -1,7 +1,6 @@
 defmodule AlchemistForum.Accounts.User do
   use AlchemistForum.Schema
 
-  @primary_key {:id, :binary_id, autogenerate: true}
   schema "users" do
     field :name, :string
     field :last_name, :string
