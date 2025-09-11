@@ -3,7 +3,6 @@ defmodule AlchemistForum.Forum.Topic do
 
   alias AlchemistForum.Accounts.User
 
-  @primary_key {:id, :binary_id, autogenerate: true}
   schema "topics" do
     field :title, :string
     field :slug, :string

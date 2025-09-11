@@ -4,7 +4,6 @@ defmodule AlchemistForum.Forum.Post do
   alias AlchemistForum.Accounts.User
   alias AlchemistForum.Forum.Topic
 
-  @primary_key {:id, :binary_id, autogenerate: true}
   schema "posts" do
     belongs_to :topic_id, Topic
     belongs_to :author_id, User
