@@ -5,10 +5,11 @@ defmodule AlchemistForum.Forum.PostsPin do
   alias AlchemistForum.Accounts.User
   alias AlchemistForum.Forum.Post
 
+  @primary_key false
   schema "posts_pins" do
-      belongs_to :post_id, Post, primary_key: true
-      belongs_to :pinned_by_id, User, primary_key: true
-      field :role, Ecto.Enum, values: [:moderator, :admin]
+    belongs_to :post, Post, primary_key: true
+    belongs_to :pinned_by, User, primary_key: true
+    field :role, Ecto.Enum, values: [:moderator, :admin]
 
     timestamps()
   end
@@ -17,5 +18,7 @@ defmodule AlchemistForum.Forum.PostsPin do
     pin
     |> cast(attrs, [:role, :post_id, :pinned_by_id])
     |> validate_required([:role, :post_id, :pinned_by_id])
+    |> assoc_constraint(:post)
+    |> assoc_constraint(:pinned_by)
   end
 end
