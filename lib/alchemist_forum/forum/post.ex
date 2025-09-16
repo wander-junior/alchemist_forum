@@ -5,8 +5,8 @@ defmodule AlchemistForum.Forum.Post do
   alias AlchemistForum.Forum.Topic
 
   schema "posts" do
-    belongs_to :topic_id, Topic
-    belongs_to :author_id, User
+    belongs_to :topic, Topic
+    belongs_to :author, User
 
     field :message, :string
     field :number_of_up, :integer, default: 0
