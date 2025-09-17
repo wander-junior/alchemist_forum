@@ -22,9 +22,10 @@ defmodule AlchemistForum.Forum.Topic do
 
   def changeset(topic, attrs) do
     topic
-    |> cast(attrs, [:title, :slug, :its_open, :author_id])
-    |> validate_required([:title, :slug, :its_open, :author_id])
+    |> cast(attrs, [:title, :slug, :number_of_posts, :its_open, :author_id, :closed_by_id])
+    |> validate_required([:title, :slug, :number_of_posts, :its_open, :author_id, :closed_by_id])
     |> validate_length(:title, min: 3, max: 120)
+    |> validate_number(:number_of_posts, greater_than: 0)
     |> unique_constraint(:slug)
     |> assoc_constraint(:author)
     |> assoc_constraint(:closed_by)

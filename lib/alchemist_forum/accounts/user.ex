@@ -11,7 +11,11 @@ defmodule AlchemistForum.Accounts.User do
 
     field :strike, :integer, default: 0
     field :suspend, :boolean, default: false
-    field :status, Ecto.Enum, values: [:online, :offline, :suspended, :expelled], default: :offline
+
+    field :status, Ecto.Enum,
+      values: [:online, :offline, :suspended, :expelled],
+      default: :offline
+
     field :suspended_until, :naive_datetime
     field :type, Ecto.Enum, values: [:normal, :moderator, :admin], default: :normal
     field :active, :boolean, default: true

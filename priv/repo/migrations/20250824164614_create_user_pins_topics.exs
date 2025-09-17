@@ -11,5 +11,4 @@ defmodule AlchemistForum.Repo.Migrations.CreateUserPinsTopics do
 
     create unique_index(:user_pin_topics, [:user_id, :topic_id])
   end
-
 end
