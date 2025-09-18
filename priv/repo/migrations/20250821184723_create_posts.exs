@@ -11,7 +11,7 @@ defmodule AlchemistForum.Repo.Migrations.CreatePosts do
       add :number_of_up, :integer, null: false, default: 0
       add :number_of_down, :integer, null: false, default: 0
       add :time_to_edit, :naive_datetime
-      add :number_of_messages, :integer, null: false
+      add :number_of_messages, :integer, null: false, default: 0
       add :its_open, :boolean, null: false, default: true
 
       timestamps()
