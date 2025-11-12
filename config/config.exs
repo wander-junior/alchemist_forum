@@ -11,6 +11,11 @@ config :alchemist_forum,
   ecto_repos: [AlchemistForum.Repo],
   generators: [timestamp_type: :utc_datetime]
 
+# Configure repo to use binary id
+config :alchemist_forum, AlchemistForum.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
+
 # Configures the endpoint
 config :alchemist_forum, AlchemistForumWeb.Endpoint,
   url: [host: "localhost"],

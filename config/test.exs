@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :alchemist_forum, AlchemistForum.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "1234",
   hostname: "localhost",
   database: "alchemist_forum_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
