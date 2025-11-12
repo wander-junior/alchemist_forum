@@ -21,7 +21,7 @@ defmodule AlchemistForum.MixProject do
   def application do
     [
       mod: {AlchemistForum.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools],
     ]
   end
 
@@ -65,7 +65,8 @@ defmodule AlchemistForum.MixProject do
       {:gettext, "~> 0.26"},
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
-      {:bandit, "~> 1.5"}
+      {:bandit, "~> 1.5"},
+      {:guardian, "~> 2.3"}
     ]
   end
 
