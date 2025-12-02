@@ -23,7 +23,7 @@ defmodule AlchemistForum.Accounts.User do
     field :exclude_topic, :boolean, default: false
     field :bulletin_board, :string
 
-    timestamps(inserted_at: :registered_at)
+    timestamps()
   end
 
   def changeset(user, attrs) do
