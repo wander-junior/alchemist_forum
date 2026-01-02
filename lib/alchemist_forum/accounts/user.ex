@@ -50,6 +50,7 @@ defmodule AlchemistForum.Accounts.User do
       :email,
       :password
     ])
+    |> put_password_hash()
     |> validate_length(:name, min: 3, max: 50)
     |> validate_length(:last_name, min: 3, max: 50)
     |> validate_length(:nick_name, min: 3, max: 30)
@@ -58,4 +59,12 @@ defmodule AlchemistForum.Accounts.User do
     |> unique_constraint(:email)
     |> unique_constraint(:nick_name)
   end
+
+  defp put_password_hash(
+         %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
+       ) do
+    change(changeset, password: Argon2.hash_pwd_salt(password))
+  end
+
+  defp put_password_hash(changeset), do: changeset
 end

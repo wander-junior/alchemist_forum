@@ -10,6 +10,7 @@ defmodule AlchemistForum.Guardian do
     sub = to_string(id)
     {:ok, sub}
   end
+
   def subject_for_token(_, _) do
     {:error, :reason_for_error}
   end
@@ -21,5 +22,4 @@ defmodule AlchemistForum.Guardian do
   def resource_from_claims(_claims) do
     {:error, :invalid_claims}
   end
-
 end
