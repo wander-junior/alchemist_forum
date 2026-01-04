@@ -50,7 +50,6 @@ defmodule AlchemistForum.Accounts.User do
       :email,
       :password
     ])
-    |> put_password_hash()
     |> validate_length(:name, min: 3, max: 50)
     |> validate_length(:last_name, min: 3, max: 50)
     |> validate_length(:nick_name, min: 3, max: 30)
@@ -58,6 +57,7 @@ defmodule AlchemistForum.Accounts.User do
     |> validate_format(:email, ~r/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
     |> unique_constraint(:email)
     |> unique_constraint(:nick_name)
+    |> put_password_hash()
   end
 
   defp put_password_hash(

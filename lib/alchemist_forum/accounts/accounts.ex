@@ -13,6 +13,16 @@ defmodule AlchemistForum.Accounts do
     |> Repo.insert()
   end
 
+  def update_user(%User{} = user, attrs) do
+    user
+    |> User.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_user(%User{} = user) do
+    Repo.delete(user)
+  end
+
   def authenticate_user(email, plain_text_password) do
     query = from u in User, where: u.email == ^email
 
