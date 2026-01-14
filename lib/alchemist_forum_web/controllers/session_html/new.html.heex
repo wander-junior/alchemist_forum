@@ -16,12 +16,12 @@
 
 <%= if msg = Phoenix.Flash.get(@flash, :info) do %>
   <div class="alert alert-info">
-    <%= msg %>
+    {msg}
   </div>
 <% end %>
 
 <%= if msg = Phoenix.Flash.get(@flash, :error) do %>
   <div class="alert alert-error">
-    <%= msg %>
+    {msg}
   </div>
 <% end %>
