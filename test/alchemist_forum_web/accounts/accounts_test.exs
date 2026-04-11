@@ -15,7 +15,7 @@ defmodule AlchemistForum.AccountsTest do
       }
 
       assert {:ok, user} = Accounts.register_user(valid_attrs)
-      assert Argon2.verify_pass("supersecret", user.password)
+      assert Argon2.verify_pass("supersecret", user.password_hash)
       assert user.name == "John"
       assert user.nick_name == "johnny"
       assert user.email == "john@example.com"
@@ -50,7 +50,7 @@ defmodule AlchemistForum.AccountsTest do
       update_attrs = %{name: "Jane", email: "jane@example.com", password: "newsecret"}
 
       assert {:ok, updated_user} = Accounts.update_user(user, update_attrs)
-      assert Argon2.verify_pass("newsecret", updated_user.password)
+      assert Argon2.verify_pass("newsecret", updated_user.password_hash)
       assert updated_user.name == "Jane"
       assert updated_user.email == "jane@example.com"
     end
