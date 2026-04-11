@@ -8,7 +8,7 @@ defmodule AlchemistForum.Accounts.User do
     field :nick_name, :string
 
     field :email, :string
-    field :password, :string
+    field :password, :string, virtual: true
 
     field :strike, :integer, default: 0
     field :suspend, :boolean, default: false
