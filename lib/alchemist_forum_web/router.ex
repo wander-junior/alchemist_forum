@@ -30,6 +30,10 @@ defmodule AlchemistForumWeb.Router do
 
     live "/login", LoginLive
     post "/login", SessionController, :login
+
+    live "/signup", SignupLive
+    post "/signup", SessionController, :signup
+
     get "/logout", SessionController, :logout
   end
 
