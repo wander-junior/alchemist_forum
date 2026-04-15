@@ -35,6 +35,18 @@ defmodule AlchemistForumWeb.SessionLive do
           <.button>Submit</.button>
         </div>
       </.form>
+
+      <%= if msg = Phoenix.Flash.get(@flash, :info) do %>
+        <div class="alert alert-info">
+          <%= msg %>
+        </div>
+      <% end %>
+
+      <%= if msg = Phoenix.Flash.get(@flash, :error) do %>
+        <div class="alert alert-error">
+          <%= msg %>
+        </div>
+      <% end %>
     </div>
     """
   end
