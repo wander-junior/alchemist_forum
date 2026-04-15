@@ -41,7 +41,7 @@ defmodule AlchemistForumWeb.Router do
   scope "/", AlchemistForumWeb do
     pipe_through [:browser, :auth, :ensure_auth]
 
-    get "/protected", PageController, :protected
+    live "/protected", ProtectedLive
   end
 
   # Other scopes may use custom stacks.
