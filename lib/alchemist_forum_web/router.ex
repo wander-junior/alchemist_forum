@@ -28,7 +28,7 @@ defmodule AlchemistForumWeb.Router do
 
     get "/", PageController, :home
 
-    live "/login", SessionLive
+    live "/login", LoginLive
     post "/login", SessionController, :login
     get "/logout", SessionController, :logout
   end

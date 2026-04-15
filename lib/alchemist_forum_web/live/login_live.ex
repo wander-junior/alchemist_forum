@@ -1,4 +1,4 @@
-defmodule AlchemistForumWeb.SessionLive do
+defmodule AlchemistForumWeb.LoginLive do
   use AlchemistForumWeb, :live_view
 
   alias AlchemistForum.{Accounts, Accounts.User, Accounts.Guardian}
