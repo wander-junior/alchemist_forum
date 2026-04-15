@@ -21,22 +21,22 @@ Generate coverage reports using ExCoveralls:
 
 ```bash
 # Basic coverage report (outputs to terminal)
-mix coveralls
+MIX_ENV=test mix coveralls
 
 # Detailed coverage report with line-by-line analysis
-mix coveralls.detail
+MIX_ENV=test mix coveralls.detail
 
 # Generate HTML coverage report (saves to cover/ directory)
-mix coveralls.html
+MIX_ENV=test mix coveralls.html
 
 # Generate JSON coverage report
-mix coveralls.json
+MIX_ENV=test mix coveralls.json
 
 # Post coverage to a service (requires COVERALLS_REPO_TOKEN env var)
-mix coveralls.post
+MIX_ENV=test mix coveralls.post
 ```
 
-All coveralls commands automatically run in the test environment as configured in `mix.exs`.
+All coveralls commands should be run with `MIX_ENV=test` to ensure proper test environment configuration.
 
 ## Learn more
 

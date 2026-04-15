@@ -1,6 +1,8 @@
 defmodule AlchemistForumWeb.PageControllerTest do
   use AlchemistForumWeb.ConnCase
 
+  import Phoenix.LiveViewTest
+
   alias AlchemistForum.Accounts
 
   test "GET /", %{conn: conn} do
@@ -20,11 +22,12 @@ defmodule AlchemistForumWeb.PageControllerTest do
 
     {:ok, token, _claims} = AlchemistForum.Accounts.Guardian.encode_and_sign(user)
 
-    conn =
-      conn
-      |> put_req_header("authorization", "Bearer #{token}")
-      |> get(~p"/protected")
+    conn = init_test_session(conn, %{"guardian_default_token" => token})
 
-    assert html_response(conn, 200)
+    {:ok, _view, html} = live(conn, "/protected")
+
+    assert html =~ "Protected Page"
+    assert html =~ "You can only see this page if you are logged in"
+    assert html =~ "logged in as #{user.name}"
   end
 end
