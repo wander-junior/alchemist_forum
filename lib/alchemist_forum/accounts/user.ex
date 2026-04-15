@@ -8,7 +8,8 @@ defmodule AlchemistForum.Accounts.User do
     field :nick_name, :string
 
     field :email, :string
-    field :password, :string
+    field :password, :string, virtual: true
+    field :password_hash, :string
 
     field :strike, :integer, default: 0
     field :suspend, :boolean, default: false
@@ -23,7 +24,7 @@ defmodule AlchemistForum.Accounts.User do
     field :exclude_topic, :boolean, default: false
     field :bulletin_board, :string
 
-    timestamps(inserted_at: :registered_at)
+    timestamps()
   end
 
   def changeset(user, attrs) do
@@ -57,5 +58,14 @@ defmodule AlchemistForum.Accounts.User do
     |> validate_format(:email, ~r/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)
     |> unique_constraint(:email)
     |> unique_constraint(:nick_name)
+    |> put_password_hash()
   end
+
+  defp put_password_hash(
+         %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
+       ) do
+    change(changeset, password_hash: Argon2.hash_pwd_salt(password))
+  end
+
+  defp put_password_hash(changeset), do: changeset
 end

@@ -35,3 +35,4 @@ alchemist_forum-*.tar
 npm-debug.log
 /assets/node_modules/
 
+/.vibeflow/

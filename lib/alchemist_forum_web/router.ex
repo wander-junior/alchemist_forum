@@ -14,10 +14,34 @@ defmodule AlchemistForumWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :auth do
+    plug AlchemistForum.Accounts.Pipeline
+  end
+
+  pipeline :ensure_auth do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
+  # Maybe logged in routes
   scope "/", AlchemistForumWeb do
-    pipe_through :browser
+    pipe_through [:browser, :auth]
 
     get "/", PageController, :home
+
+    live "/login", LoginLive
+    post "/login", SessionController, :login
+
+    live "/signup", SignupLive
+    post "/signup", SessionController, :signup
+
+    get "/logout", SessionController, :logout
+  end
+
+  # Definitely logged in scope
+  scope "/", AlchemistForumWeb do
+    pipe_through [:browser, :auth, :ensure_auth]
+
+    live "/protected", ProtectedLive
   end
 
   # Other scopes may use custom stacks.

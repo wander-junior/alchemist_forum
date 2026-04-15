@@ -19,7 +19,7 @@ defmodule AlchemistForum.Repo.Migrations.CreateUsers do
       add :exclude_topic, :boolean, null: false, default: false
       add :bulletin_board, :string
 
-      timestamps(updated_at: true, inserted_at: :registered_at)
+      timestamps()
     end
 
     create unique_index(:users, [:email])
